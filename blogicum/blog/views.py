@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
 
+# Временная заглушка для базы данных.
 posts = [
     {
         'id': 0,
@@ -46,12 +47,14 @@ posts = [
 
 
 def index(request):
+    """Главная страница."""
     template = 'blog/index.html'
     context: dict = {'posts': posts[::-1]}
     return render(request, template, context)
 
 
 def post_detail(request, id):
+    """Отдельный пост."""
     template = 'blog/detail.html'
     context: dict = {}
     for post in posts:
@@ -63,6 +66,7 @@ def post_detail(request, id):
 
 
 def category_posts(request, category_slug):
+    """Категория постов."""
     template = 'blog/category.html'
     context = {
         'category': category_slug,
