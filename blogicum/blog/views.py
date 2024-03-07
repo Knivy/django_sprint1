@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 
 # Временная заглушка для базы данных.
-posts = [
+posts: list = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
@@ -48,27 +48,27 @@ posts = [
 
 def index(request):
     """Главная страница."""
-    template = 'blog/index.html'
+    template: str = 'blog/index.html'
     context: dict = {'posts': posts[::-1]}
     return render(request, template, context)
 
 
 def post_detail(request, id):
     """Отдельный пост."""
-    template = 'blog/detail.html'
+    template: str = 'blog/detail.html'
     context: dict = {}
     for post in posts:
         if post['id'] == id:
             context = {'post': post}
     if not context:
-        raise HttpResponseNotFound()
+        raise HttpResponseNotFound('Страница не найдена.')
     return render(request, template, context)
 
 
 def category_posts(request, category_slug):
     """Категория постов."""
-    template = 'blog/category.html'
-    context = {
+    template: str = 'blog/category.html'
+    context: dict = {
         'category': category_slug,
     }
     return render(request, template, context)

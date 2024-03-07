@@ -3,11 +3,11 @@ from django.shortcuts import render
 
 def about(request):
     """Описание проекта."""
-    template = 'pages/about.html'
+    template: str = 'pages/about.html'
     return render(request, template)
 
 
 def rules(request):
     """Правила проекта."""
-    template = 'pages/rules.html'
+    template: str = 'pages/rules.html'
     return render(request, template)
