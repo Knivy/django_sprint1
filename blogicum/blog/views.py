@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound
 
 # Временная заглушка для базы данных.
-posts: list = [
+posts: list[dict] = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
